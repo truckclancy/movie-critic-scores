@@ -436,13 +436,13 @@ app.get('/', (c) => {
         
         // Truck Clancy's Certified Fresh movies list
         const truckClancyCertifiedFresh = [
-            'The Godfather', 'Citizen Kane', 'Casablanca', 'The Dark Knight', 
-            'Pulp Fiction', 'Schindler\'s List', '12 Angry Men', 
-            'The Lord of the Rings: The Return of the King', 'Inception',
-            'The Shawshank Redemption', 'Forrest Gump', 'The Matrix',
-            'Goodfellas', 'The Silence of the Lambs', 'Saving Private Ryan',
-            'The Lion King', 'Toy Story', 'The Incredibles', 'Up',
-            'Parasite', 'Moonlight', 'Spotlight', 'Birdman'
+            "The Godfather", "Citizen Kane", "Casablanca", "The Dark Knight",
+            "Pulp Fiction", "Schindler's List", "12 Angry Men",
+            "The Lord of the Rings: The Return of the King", "Inception",
+            "The Shawshank Redemption", "Forrest Gump", "The Matrix",
+            "Goodfellas", "The Silence of the Lambs", "Saving Private Ryan",
+            "The Lion King", "Toy Story", "The Incredibles", "Up",
+            "Parasite", "Moonlight", "Spotlight", "Birdman"
         ];
 
         function showError(message) {
