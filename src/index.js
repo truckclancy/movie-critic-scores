@@ -365,7 +365,7 @@ app.get('/', (c) => {
         </div>
         
         <div class="search-container" id="searchContainer">
-            <form class="search-form" id="searchForm">
+            <form class="search-form" id="searchForm" onsubmit="return false;">
                 <input 
                     type="text" 
                     class="search-input" 
@@ -373,7 +373,7 @@ app.get('/', (c) => {
                     placeholder="Enter movie name (e.g., The Godfather, Inception, Pulp Fiction)"
                     required
                 >
-                <button type="submit" class="search-btn" id="searchBtn">
+                <button type="button" class="search-btn" id="searchBtn">
                     🔍 Search
                 </button>
             </form>
@@ -630,6 +630,16 @@ app.get('/', (c) => {
                 return;
             }
             
+            searchMovies(query);
+        });
+
+        // Also handle search button clicks directly (prevents full-page reload if form submission occurs)
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if (!query) {
+                showError('Please enter a movie name to search.');
+                return;
+            }
             searchMovies(query);
         });
 
