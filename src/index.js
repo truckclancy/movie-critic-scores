@@ -594,8 +594,15 @@ app.get('/', (c) => {
                     return;
                 }
                 
-                // Get detailed info for the first movie (most relevant)
-                const firstMovie = searchData.search[0];
+                // Find the best match with an IMDb ID
+                const firstMovie = searchData.search.find(movie => movie.ids.imdbid) || searchData.search[0];
+                
+                if (!firstMovie.ids.imdbid) {
+                    resultsDiv.innerHTML = '<div class="no-results">No detailed information available for this movie.</div>';
+                    hideLoading();
+                    return;
+                }
+                
                 const detailResponse = await fetch('/api/movie/' + firstMovie.ids.imdbid);
                 
                 if (!detailResponse.ok) {
