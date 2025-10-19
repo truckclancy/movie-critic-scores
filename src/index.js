@@ -225,7 +225,7 @@ app.get('/', (c) => {
     <div class="container">
         <div class="header">
             <h1>🎬 Movie Critic Scores</h1>
-            <p>Search any movie to see scores from Rotten Tomatoes, Metacritic, IMDb, and more!</p>
+            <p>Search any movie to see scores from Rotten Tomatoes and Metacritic!</p>
         </div>
         
         <div class="search-container">
@@ -305,7 +305,12 @@ app.get('/', (c) => {
 
         function renderMovie(movie) {
             const ratings = movie.ratings || [];
-            const validRatings = ratings.filter(r => r.value !== null && r.value !== undefined);
+            // Only show Metacritic and Rotten Tomatoes
+            const validRatings = ratings.filter(r => 
+                r.value !== null && 
+                r.value !== undefined && 
+                (r.source === 'metacritic' || r.source === 'tomatoes' || r.source === 'metacriticuser')
+            );
             
             return \`
                 <div class="movie-card">
@@ -320,7 +325,9 @@ app.get('/', (c) => {
                     <div class="ratings-grid">
                         \${validRatings.map(rating => \`
                             <div class="rating-item">
-                                <div class="rating-source">\${rating.source.replace(/([A-Z])/g, ' $1').trim()}</div>
+                                <div class="rating-source">\${rating.source === 'metacritic' ? 'Metacritic (Critics)' : 
+                                                           rating.source === 'metacriticuser' ? 'Metacritic (Users)' : 
+                                                           'Rotten Tomatoes'}</div>
                                 <div class="rating-value">\${formatRatingValue(rating.value, rating.source)}</div>
                                 <div class="rating-votes">\${formatVotes(rating.votes)}</div>
                             </div>
