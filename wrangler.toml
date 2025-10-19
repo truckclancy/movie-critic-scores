@@ -1,0 +1,9 @@
+name = "movie-critic-scores"
+main = "src/index.js"
+compatibility_date = "2024-10-19"
+
+[env.production]
+name = "movie-critic-scores"
+
+[env.staging]
+name = "movie-critic-scores-staging"
