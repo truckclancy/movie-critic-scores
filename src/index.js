@@ -553,27 +553,26 @@ app.get('/', (c) => {
                     ).join('') +
                 '</div>' : '';
             
-            return 
-                '<div class="movie-card">' +
-                    '<div class="movie-header">' +
-                        '<div>' +
-                            '<div class="movie-title">' + movie.title + '</div>' +
-                            '<div class="movie-year">' + movie.year + '</div>' +
-                            certificationBadges +
-                        '</div>' +
-                        '<div class="movie-score">' + (movie.score || movie.score_average || 'N/A') + '</div>' +
+            return '<div class="movie-card">' +
+                '<div class="movie-header">' +
+                    '<div>' +
+                        '<div class="movie-title">' + movie.title + '</div>' +
+                        '<div class="movie-year">' + movie.year + '</div>' +
+                        certificationBadges +
                     '</div>' +
-                    
-                    '<div class="ratings-grid">' +
-                        validRatings.map(rating => 
-                            '<div class="rating-item">' +
-                                '<div class="rating-source">' + (rating.source === 'metacritic' ? 'Metacritic' : 'Rotten Tomatoes') + '</div>' +
-                                '<div class="rating-value">' + formatRatingValue(rating.value, rating.source) + '</div>' +
-                                '<div class="rating-votes">' + formatVotes(rating.votes) + '</div>' +
-                            '</div>'
-                        ).join('') +
-                    '</div>' +
-                '</div>';
+                    '<div class="movie-score">' + (movie.score || movie.score_average || 'N/A') + '</div>' +
+                '</div>' +
+                
+                '<div class="ratings-grid">' +
+                    validRatings.map(rating => 
+                        '<div class="rating-item">' +
+                            '<div class="rating-source">' + (rating.source === 'metacritic' ? 'Metacritic' : 'Rotten Tomatoes') + '</div>' +
+                            '<div class="rating-value">' + formatRatingValue(rating.value, rating.source) + '</div>' +
+                            '<div class="rating-votes">' + formatVotes(rating.votes) + '</div>' +
+                        '</div>'
+                    ).join('') +
+                '</div>' +
+            '</div>';
         }
 
         async function searchMovies(query) {
