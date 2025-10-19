@@ -527,7 +527,7 @@ app.get('/', (c) => {
             const metacriticRating = movie.ratings?.find(r => r.source === 'metacritic');
             if (metacriticRating && metacriticRating.value >= 90) {
                 certifications.push({
-                    text: '🎯 Critics\' Choice',
+                    text: "🎯 Critics' Choice",
                     class: 'critics-choice'
                 });
             }
