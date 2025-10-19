@@ -305,11 +305,11 @@ app.get('/', (c) => {
 
         function renderMovie(movie) {
             const ratings = movie.ratings || [];
-            // Only show Metacritic and Rotten Tomatoes
+            // Only show Metacritic (Critics) and Rotten Tomatoes
             const validRatings = ratings.filter(r => 
                 r.value !== null && 
                 r.value !== undefined && 
-                (r.source === 'metacritic' || r.source === 'tomatoes' || r.source === 'metacriticuser')
+                (r.source === 'metacritic' || r.source === 'tomatoes')
             );
             
             return \`
@@ -325,9 +325,7 @@ app.get('/', (c) => {
                     <div class="ratings-grid">
                         \${validRatings.map(rating => \`
                             <div class="rating-item">
-                                <div class="rating-source">\${rating.source === 'metacritic' ? 'Metacritic (Critics)' : 
-                                                           rating.source === 'metacriticuser' ? 'Metacritic (Users)' : 
-                                                           'Rotten Tomatoes'}</div>
+                                <div class="rating-source">\${rating.source === 'metacritic' ? 'Metacritic' : 'Rotten Tomatoes'}</div>
                                 <div class="rating-value">\${formatRatingValue(rating.value, rating.source)}</div>
                                 <div class="rating-votes">\${formatVotes(rating.votes)}</div>
                             </div>
