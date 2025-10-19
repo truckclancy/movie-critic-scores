@@ -716,7 +716,7 @@ app.get('/', (c) => {
 
         function getListTitle(listType) {
             const titles = {
-                'truck-clancy-certified-fresh': 'Truck Clancy\'s Certified Fresh Movies',
+                'truck-clancy-certified-fresh': "Truck Clancy's Certified Fresh Movies",
                 'imdb-top-250': 'IMDb Top 250 Movies',
                 'oscar-winners': 'Academy Award Winners'
             };
